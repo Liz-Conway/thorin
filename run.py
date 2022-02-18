@@ -22,17 +22,20 @@ def index():
 # then this method is called and the about.html page is displayed
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    # pageTitle is just a variable name - it could be anything
+    # You can add as many variables as you like
+    # This is setting data on the server side - it will be displayed on the client side
+    return render_template("about.html", pageTitle="About")
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html", pageTitle="Contact")
 
 
 @app.route("/careers")
 def careers():
-    return render_template("careers.html")
+    return render_template("careers.html", pageTitle="Careers")
 
 
 
