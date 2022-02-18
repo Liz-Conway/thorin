@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Hello Flask</title>
-</head>
-<body>
-	<nav>
-		<ul>
-			{# For flask to use a link - it needs to use url_for() method #}
-			{# When Flask encounters the '{{' it knows there is code to be run
-			it run the url_for() method, 
-			which runs the method we pass in (E.G. index or about),
-			which then shows the page #} 
-			<li><a href="{{ url_for('index') }}">Home</a></li>
-			<li><a href="{{ url_for('about') }}">About</a></li>
-			<li><a href="{{ url_for('contact') }}">Contact</a></li>
-		</ul>
-	</nav>
-	
+{# We are using the base template,
+   so we only need to define the content that will be injected into the template #}
+{% extends "base.html" %}
+{# Define the block named 'content' #}
+{% block content %}	
 	<h1>Home Page</h1>
-</body>
-</html>
+{% endblock %}

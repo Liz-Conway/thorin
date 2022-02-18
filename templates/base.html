@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hello Flask</title>
+</head>
+<body>
+	<nav>
+		<ul>
+			{# For flask to use a link - it needs to use url_for() method #}
+			{# When Flask encounters the '{{' it knows there is code to be run
+			it run the url_for() method, 
+			which runs the method we pass in (E.G. index or about),
+			which then shows the page #}
+			{# The '{{' contains an expression that outputs something onto the screen,
+			 i.e. the url for the link in this case #} 
+			<li><a href="{{ url_for('index') }}">Home</a></li>
+			<li><a href="{{ url_for('about') }}">About</a></li>
+			<li><a href="{{ url_for('contact') }}">Contact</a></li>
+			<li><a href="{{ url_for('careers') }}">Careers</a></li>
+		</ul>
+	</nav>
+	
+	{# block is a placeholder where we can inject code from other pages	#}
+	{# '{%' are for statements that control the flow of logic
+	E.G. for, if or block element #}
+	{# We are naming this block 'content' #}
+	{% block content %}
+	{% endblock %}
+</body>
+</html>
