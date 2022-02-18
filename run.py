@@ -4,6 +4,8 @@ Created on 18 Feb 2022
 @author: liz
 '''
 import os
+# To be able to read JSON data we need to import json
+import json
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -22,10 +24,21 @@ def index():
 # then this method is called and the about.html page is displayed
 @app.route("/about")
 def about():
+    # Initialise an empty array
+    data = []
+    
+    # We need python to read the JSON data
+    # with block - 
+    # Python opens the JSON file as read only ("r")
+    # and assigns the contents of that file to a new variable called json_data
+    with open("data/company.json", "r") as json_data:
+        # we need to set our data list to equal the parsed data list we sent through
+        data = json.load(json_data)
+    
     # pageTitle is just a variable name - it could be anything
     # You can add as many variables as you like
     # This is setting data on the server side - it will be displayed on the client side
-    return render_template("about.html", pageTitle="About")
+    return render_template("about.html", pageTitle="About", company=data)
 
 
 @app.route("/contact")
