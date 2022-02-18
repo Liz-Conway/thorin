@@ -12,8 +12,23 @@ app = Flask(__name__)
 def index():
     # render_template expects the html files to be in
     # a directory called 'templates'
+    # return render_template("index.html")
+    # return "Deh index page"
     return render_template("index.html")
     
+    
+# Routes are used to link part of a url to a method
+# Here if we type localhost:5000/about into the web browser 
+# then this method is called and the about.html page is displayed
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 
 if __name__ == "__main__":
     app.run(
