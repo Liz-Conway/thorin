@@ -1,0 +1,4 @@
+.project
+.pydevproject
+env.py
+__pycache__/
