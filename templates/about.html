@@ -20,9 +20,15 @@ that will be injected into the template #}
 	
 	{# 'company' is passed in from run.py #}	
 	{% for member in company %}
+	
+	{# When we create a for loop it creates an object called 'loop'
+	   That 'loop' object has an 'index' property 
+	   This shows us exactly which iteration of the loop we are on
+	   All documentation is at : jinja.palletsprojects.com #}
+	   
 	<div class="featurette">
 		<div class="hobbitCharacter">
-			<h3>{{ member.name }}</h3>
+			<h3>{{loop.index}}. {{ member.name }}</h3>
 			<p>{{ member.description }}</p>
 		</div>
 		<div class="hobbitImage">
@@ -30,7 +36,11 @@ that will be injected into the template #}
 		</div>
 	</div>
 	
-	<hr class="featurette-divider">
+	{# Use an 'if' statement to hide the last hr #}
+	{% if loop.index != loop.length %}
+		<hr class="featurette-divider">
+	{% endif %}
+	
 	{% endfor %}
 
 
