@@ -41,6 +41,21 @@ def about():
     return render_template("about.html", pageTitle="About", company=data)
 
 
+# The angle brackets will pass the name from our url path into the view below
+# It passes memberName as an argument to the method (i.e. a parameter)
+@app.route("/about/<memberName>")
+def aboutMember(memberName):
+    # Create empty object which will be used to store our data
+    member = {}
+    with open("data/company.json", "r") as jsonData:
+        data = json.load(jsonData)
+        # Select only the member passed in from the url path
+        for obj in data:
+            if obj["url"] == memberName:
+                member = obj
+    
+    return render_template("member.html", member=member)
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html", pageTitle="Contact")

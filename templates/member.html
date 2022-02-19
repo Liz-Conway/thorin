@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div>
+		<img alt="Profile image for {{ member.name }}" src="{{ member.imageSource }}">
+		<h2>{{ member.name }}</h2>
+	</div>
+	<p>{{ member.description }}</p>
+{% endblock %}

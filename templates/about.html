@@ -28,7 +28,7 @@ that will be injected into the template #}
 	   
 	<div class="featurette">
 		<div class="hobbitCharacter">
-			<h3>{{loop.index}}. {{ member.name }}</h3>
+			<h3>{{loop.index}}. <a href="/about/{{ member.url }}">{{ member.name }}</a></h3>
 			<p>{{ member.description }}</p>
 		</div>
 		<div class="hobbitImage">
