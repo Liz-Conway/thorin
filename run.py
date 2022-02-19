@@ -6,7 +6,11 @@ Created on 18 Feb 2022
 import os
 # To be able to read JSON data we need to import json
 import json
-from flask import Flask, render_template
+# request will find out what method we used (GET/POST), 
+# and will contain our form object after we have POSTed it.
+from flask import Flask, render_template, request
+
+
 
 app = Flask(__name__)
 
@@ -56,8 +60,14 @@ def aboutMember(memberName):
     
     return render_template("member.html", member=member)
 
-@app.route("/contact")
+# By default Flask expects all server requests to be 'GET'
+# If we want to use 'POST' we need to inform Flask of the allowable methods
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        # print(request.form)
+        print(request.form.get("name")) # If there is no data -> None
+        print(request.form["email"])    # If there is no data -> throws Exception
     return render_template("contact.html", pageTitle="Contact")
 
 
