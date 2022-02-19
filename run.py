@@ -8,11 +8,18 @@ import os
 import json
 # request will find out what method we used (GET/POST), 
 # and will contain our form object after we have POSTed it.
-from flask import Flask, render_template, request
+# flash displays a non-permanent message that only stays on-screen for a short time.
+# flash needs a secret key, since flash cryptographically signs all the messages.
+from flask import Flask, render_template, request, flash
+
+# Only import the env.py file if it exists
+if os.path.exists("env.py"):
+    import env
 
 
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY")
 
 @app.route("/")
 def index():
@@ -66,8 +73,10 @@ def aboutMember(memberName):
 def contact():
     if request.method == "POST":
         # print(request.form)
-        print(request.form.get("name")) # If there is no data -> None
-        print(request.form["email"])    # If there is no data -> throws Exception
+        # print(request.form.get("name")) # If there is no data -> None
+        # print(request.form["email"])    # If there is no data -> throws Exception
+        flash("Thanks {}, we have received your message!".format(
+            request.form["name"]))
     return render_template("contact.html", pageTitle="Contact")
 
 
