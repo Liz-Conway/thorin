@@ -9,7 +9,7 @@
           flex-direction: row;
 }
 /* line 4, ../../sass/layout/_grid.sass */
-.featurette:nth-child(even) {
+.featurette:nth-child(4n+3) {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
